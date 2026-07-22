@@ -35,8 +35,8 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from "~/components/BaseButton.vue";
-import BaseModal from "~/components/BaseModal.vue";
+import BaseButton from "~/components/base/BaseButton.vue";
+import BaseModal from "~/components/base/BaseModal.vue";
 import ErrorState from "~/components/ErrorState.vue";
 import LoadingState from "~/components/LoadingState.vue";
 import TaskFilters from "~/components/TaskFilters.vue";
