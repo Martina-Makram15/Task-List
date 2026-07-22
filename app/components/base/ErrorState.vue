@@ -1,8 +1,8 @@
 <template>
   <div
-    class="flex flex-col items-center justify-center gap-3 rounded-lg border border-red-200 bg-red-50 py-12 text-center"
+    class="flex flex-col items-center justify-center gap-3 rounded-2xl border border-red-100 bg-red-50/60 py-14 text-center"
   >
-    <p class="text-sm text-red-700">{{ message }}</p>
+    <p class="max-w-xs text-sm text-red-700">{{ message }}</p>
     <BaseButton type="button" variant="danger" @click="emit('retry')">
       Try again
     </BaseButton>

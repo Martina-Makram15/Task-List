@@ -3,13 +3,13 @@
     <label
       v-if="label"
       :for="id"
-      class="block text-sm font-medium text-gray-700"
+      class="block text-sm font-medium text-slate-700"
       >{{ label }}</label
     >
     <select
       :id="id"
       v-model="model"
-      class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+      class="mt-1.5 w-full cursor-pointer rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm transition hover:border-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-500/10"
     >
       <option v-for="option in options" :key="option" :value="option">
         {{ option }}

@@ -1,8 +1,8 @@
 <template>
-  <div class="mx-auto max-w-2xl px-4 py-10">
+  <div class="mx-auto max-w-2xl px-4 py-10 sm:py-14">
     <NuxtLink
       to="/"
-      class="mb-6 inline-flex items-center gap-1 text-sm text-indigo-600 hover:text-indigo-700"
+      class="mb-6 inline-flex items-center gap-1 text-sm font-medium text-indigo-600 transition hover:text-indigo-700"
     >
       Back to tasks
     </NuxtLink>
@@ -13,33 +13,42 @@
 
     <div
       v-else-if="task"
-      class="mt-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm"
+      class="mt-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
     >
       <div class="flex flex-wrap items-center gap-2">
-        <h1 class="text-xl font-semibold text-gray-900">{{ task.title }}</h1>
+        <h1
+          class="min-w-0 break-words text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl"
+        >
+          {{ task.title }}
+        </h1>
         <TaskStatusBadge :status="task.status" />
         <span
           v-if="isOverdue"
-          class="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800"
+          class="inline-flex items-center gap-1.5 rounded-full bg-red-50 px-2.5 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20"
         >
+          <span class="h-1.5 w-1.5 rounded-full bg-red-500" />
           Overdue
         </span>
       </div>
 
-      <p class="mt-4 whitespace-pre-line text-sm text-gray-600">
+      <p
+        class="mt-4 whitespace-pre-line break-words text-sm leading-relaxed text-slate-600"
+      >
         {{ task.description || "No description provided." }}
       </p>
 
-      <dl class="mt-6 grid grid-cols-2 gap-4 text-sm">
+      <dl
+        class="mt-6 grid grid-cols-2 gap-4 border-t border-slate-100 pt-6 text-sm"
+      >
         <div>
-          <dt class="text-gray-500">Due date</dt>
-          <dd class="mt-1 font-medium text-gray-900">
+          <dt class="text-slate-500">Due date</dt>
+          <dd class="mt-1 font-medium text-slate-900">
             {{ formattedDueDate }}
           </dd>
         </div>
         <div>
-          <dt class="text-gray-500">Last updated</dt>
-          <dd class="mt-1 font-medium text-gray-900">
+          <dt class="text-slate-500">Last updated</dt>
+          <dd class="mt-1 font-medium text-slate-900">
             {{ formattedUpdatedAt }}
           </dd>
         </div>

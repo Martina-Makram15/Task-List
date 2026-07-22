@@ -2,30 +2,35 @@
   <li
     tabindex="0"
     role="link"
-    class="flex cursor-pointer flex-col gap-3 rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition hover:border-indigo-300 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 sm:flex-row sm:items-start sm:justify-between"
+    class="group flex cursor-pointer flex-col gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 sm:flex-row sm:items-start sm:justify-between"
     @click="goToDetail"
   >
     <div class="min-w-0 flex-1">
       <div class="flex flex-wrap items-center gap-2">
-        <h3 class="truncate font-medium text-gray-900">{{ task.title }}</h3>
+        <h3
+          class="truncate font-medium text-slate-900 transition group-hover:text-indigo-600"
+        >
+          {{ task.title }}
+        </h3>
 
         <TaskStatusBadge :status="task.status" />
 
         <span
           v-if="isOverdue"
-          class="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800"
+          class="inline-flex items-center gap-1.5 rounded-full bg-red-50 px-2.5 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20"
         >
+          <span class="h-1.5 w-1.5 rounded-full bg-red-500" />
           Overdue
         </span>
       </div>
 
       <p
         v-if="task.description"
-        class="mt-1 line-clamp-2 text-sm text-gray-500"
+        class="mt-1.5 line-clamp-2 text-sm text-slate-500"
       >
         {{ task.description }}
       </p>
-      <p class="mt-2 text-xs text-gray-400">Due {{ formattedDueDate }}</p>
+      <p class="mt-2 text-xs text-slate-400">Due {{ formattedDueDate }}</p>
     </div>
 
     <div class="flex shrink-0 gap-2">

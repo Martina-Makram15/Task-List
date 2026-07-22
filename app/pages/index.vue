@@ -1,7 +1,9 @@
 <template>
-  <div class="mx-auto max-w-3xl px-4 py-10">
-    <header class="mb-6 flex items-center justify-between">
-      <h1 class="text-2xl font-semibold text-gray-900">Tasks</h1>
+  <div class="mx-auto max-w-3xl px-4 py-10 sm:py-14">
+    <header class="mb-8 flex items-center justify-between">
+      <h1 class="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+        Tasks
+      </h1>
       <BaseButton type="button" @click="isFormOpen = true">
         Add Task
       </BaseButton>
