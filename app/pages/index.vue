@@ -1,8 +1,20 @@
 <template>
   <div class="mx-auto max-w-3xl px-4 py-10">
-    <header class="mb-6">
+    <header class="mb-6 flex items-center justify-between">
       <h1 class="text-2xl font-semibold text-gray-900">Tasks</h1>
+      <BaseButton type="button" @click="isFormOpen = true">
+        Add Task
+      </BaseButton>
     </header>
+
+    <BaseModal v-model="isFormOpen" title="Add Task">
+      <TaskForm
+        show-cancel
+        :is-submitting="isSubmitting"
+        @submit="handleAddTask"
+        @cancel="isFormOpen = false"
+      />
+    </BaseModal>
 
     <TaskFilters class="mb-6" />
 
@@ -23,11 +35,25 @@
 </template>
 
 <script setup lang="ts">
+import type { TaskInput } from "../../shared/types/task";
 import { useTasksStore } from "~/stores/tasks";
 
 const tasksStore = useTasksStore();
 
+const isFormOpen = ref(false);
+const isSubmitting = ref(false);
+
 onMounted(() => {
   tasksStore.fetchTasks();
 });
+
+const handleAddTask = async (input: TaskInput): Promise<void> => {
+  isSubmitting.value = true;
+  try {
+    await tasksStore.addTask(input);
+    isFormOpen.value = false;
+  } finally {
+    isSubmitting.value = false;
+  }
+};
 </script>
