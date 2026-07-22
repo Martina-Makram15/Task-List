@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import type { Task, StatusFilter } from "../../shared/types/task";
+import type { Task, TaskInput, StatusFilter } from "../../shared/types/task";
 
 export const useTasksStore = defineStore("tasks", () => {
   const tasks = ref<Task[]>([]);
@@ -30,6 +30,15 @@ export const useTasksStore = defineStore("tasks", () => {
     }
   };
 
+  const addTask = async (input: TaskInput): Promise<Task> => {
+    const task = await $fetch<Task>("/api/tasks", {
+      method: "POST",
+      body: input,
+    });
+    tasks.value = [task, ...tasks.value];
+    return task;
+  };
+
   const removeTask = async (id: string): Promise<void> => {
     await $fetch(`/api/tasks/${id}`, { method: "DELETE" });
     tasks.value = tasks.value.filter((task) => task.id !== id);
@@ -51,6 +60,7 @@ export const useTasksStore = defineStore("tasks", () => {
     searchQuery,
     filteredTasks,
     fetchTasks,
+    addTask,
     removeTask,
     setStatusFilter,
     setSearchQuery,
