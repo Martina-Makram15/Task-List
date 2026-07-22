@@ -46,6 +46,10 @@
 </template>
 
 <script setup lang="ts">
+import BaseButton from "./BaseButton.vue";
+import BaseInput from "./BaseInput.vue";
+import BaseSelect from "./BaseSelect.vue";
+import BaseTextarea from "./BaseTextarea.vue";
 import type {
   Task,
   TaskInput,

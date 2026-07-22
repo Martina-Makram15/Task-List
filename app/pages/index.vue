@@ -35,6 +35,13 @@
 </template>
 
 <script setup lang="ts">
+import BaseButton from "~/components/BaseButton.vue";
+import BaseModal from "~/components/BaseModal.vue";
+import ErrorState from "~/components/ErrorState.vue";
+import LoadingState from "~/components/LoadingState.vue";
+import TaskFilters from "~/components/TaskFilters.vue";
+import TaskForm from "~/components/TaskForm.vue";
+import TaskList from "~/components/TaskList.vue";
 import type { TaskInput } from "../../shared/types/task";
 import { useTasksStore } from "~/stores/tasks";
 

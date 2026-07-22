@@ -17,6 +17,7 @@
 </template>
 
 <script setup lang="ts">
+import TaskCard from "./TaskCard.vue";
 import type { Task } from "../../shared/types/task";
 
 defineProps<{
