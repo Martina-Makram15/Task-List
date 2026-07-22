@@ -22,6 +22,7 @@
 </template>
 
 <script setup lang="ts">
+import BaseSelect from "./BaseSelect.vue";
 import type { StatusFilter } from "../../shared/types/task";
 import { TASK_STATUSES } from "../../shared/types/task";
 import { useTasksStore } from "~/stores/tasks";
