@@ -23,3 +23,5 @@ export interface TaskValidationErrors {
   title?: string;
   dueDate?: string;
 }
+
+export type StatusFilter = TaskStatus | "All";
