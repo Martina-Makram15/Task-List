@@ -44,9 +44,9 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from "./base/BaseButton.vue";
+import BaseButton from "../base/BaseButton.vue";
 import TaskStatusBadge from "./TaskStatusBadge.vue";
-import type { Task } from "../../shared/types/task";
+import type { Task } from "../../../shared/types/task";
 
 const props = defineProps<{
   task: Task;

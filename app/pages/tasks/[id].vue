@@ -76,10 +76,10 @@
 <script setup lang="ts">
 import BaseButton from "~/components/base/BaseButton.vue";
 import BaseModal from "~/components/base/BaseModal.vue";
-import ErrorState from "~/components/ErrorState.vue";
-import LoadingState from "~/components/LoadingState.vue";
-import TaskForm from "~/components/TaskForm.vue";
-import TaskStatusBadge from "~/components/TaskStatusBadge.vue";
+import ErrorState from "~/components/base/ErrorState.vue";
+import LoadingState from "~/components/base/LoadingState.vue";
+import TaskForm from "~/components/tasks/TaskForm.vue";
+import TaskStatusBadge from "~/components/tasks/TaskStatusBadge.vue";
 import type { Task, TaskInput } from "../../../shared/types/task";
 import { useTasksStore } from "~/stores/tasks";
 

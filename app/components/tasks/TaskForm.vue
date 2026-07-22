@@ -46,18 +46,18 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from "./base/BaseButton.vue";
-import BaseInput from "./base/BaseInput.vue";
-import BaseSelect from "./base/BaseSelect.vue";
-import BaseTextarea from "./base/BaseTextarea.vue";
+import BaseButton from "../base/BaseButton.vue";
+import BaseInput from "../base/BaseInput.vue";
+import BaseSelect from "../base/BaseSelect.vue";
+import BaseTextarea from "../base/BaseTextarea.vue";
 import type {
   Task,
   TaskInput,
   TaskStatus,
   TaskValidationErrors,
-} from "../../shared/types/task";
-import { TASK_STATUSES } from "../../shared/types/task";
-import { validateTask, isTaskValid } from "../../shared/utils/validateTask";
+} from "../../../shared/types/task";
+import { TASK_STATUSES } from "../../../shared/types/task";
+import { validateTask, isTaskValid } from "../../../shared/utils/validateTask";
 
 const props = withDefaults(
   defineProps<{

@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import type { TaskStatus } from "../../shared/types/task";
+import type { TaskStatus } from "../../../shared/types/task";
 
 defineProps<{
   status: TaskStatus;
