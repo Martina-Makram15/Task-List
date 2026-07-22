@@ -30,6 +30,19 @@ export const useTasksStore = defineStore("tasks", () => {
     }
   };
 
+  const fetchTaskById = async (id: string): Promise<Task> => {
+    const fetched = await $fetch<Task>(`/api/tasks/${id}`);
+    const index = tasks.value.findIndex((task) => task.id === id);
+    if (index === -1) {
+      tasks.value = [...tasks.value, fetched];
+    } else {
+      tasks.value = tasks.value.map((task) =>
+        task.id === id ? fetched : task,
+      );
+    }
+    return fetched;
+  };
+
   const addTask = async (input: TaskInput): Promise<Task> => {
     const task = await $fetch<Task>("/api/tasks", {
       method: "POST",
@@ -71,6 +84,7 @@ export const useTasksStore = defineStore("tasks", () => {
     searchQuery,
     filteredTasks,
     fetchTasks,
+    fetchTaskById,
     addTask,
     editTask,
     removeTask,
