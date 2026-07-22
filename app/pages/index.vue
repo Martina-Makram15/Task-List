@@ -50,11 +50,11 @@
 <script setup lang="ts">
 import BaseButton from "~/components/base/BaseButton.vue";
 import BaseModal from "~/components/base/BaseModal.vue";
-import ErrorState from "~/components/ErrorState.vue";
-import LoadingState from "~/components/LoadingState.vue";
-import TaskFilters from "~/components/TaskFilters.vue";
-import TaskForm from "~/components/TaskForm.vue";
-import TaskList from "~/components/TaskList.vue";
+import ErrorState from "~/components/base/ErrorState.vue";
+import LoadingState from "~/components/base/LoadingState.vue";
+import TaskFilters from "~/components/tasks/TaskFilters.vue";
+import TaskForm from "~/components/tasks/TaskForm.vue";
+import TaskList from "~/components/tasks/TaskList.vue";
 import type { Task, TaskInput } from "../../shared/types/task";
 import { useTasksStore } from "~/stores/tasks";
 
