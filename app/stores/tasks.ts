@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import type { Task, TaskInput, StatusFilter } from "../../shared/types/task";
+import { filterTasks } from "../../shared/utils/filterTasks";
 
 export const useTasksStore = defineStore("tasks", () => {
   const tasks = ref<Task[]>([]);
@@ -8,15 +9,9 @@ export const useTasksStore = defineStore("tasks", () => {
   const statusFilter = ref<StatusFilter>("All");
   const searchQuery = ref("");
 
-  const filteredTasks = computed<Task[]>(() => {
-    const query = searchQuery.value.trim().toLowerCase();
-    return tasks.value.filter((task) => {
-      const matchesStatus =
-        statusFilter.value === "All" || task.status === statusFilter.value;
-      const matchesSearch = task.title.toLowerCase().includes(query);
-      return matchesStatus && matchesSearch;
-    });
-  });
+  const filteredTasks = computed<Task[]>(() =>
+    filterTasks(tasks.value, statusFilter.value, searchQuery.value),
+  );
 
   const fetchTasks = async (): Promise<void> => {
     isLoading.value = true;
