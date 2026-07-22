@@ -26,6 +26,9 @@
     </div>
 
     <div class="flex shrink-0 gap-2">
+      <BaseButton type="button" variant="secondary" @click="emit('edit', task)">
+        Edit
+      </BaseButton>
       <BaseButton type="button" variant="danger" @click="handleDelete">
         Delete
       </BaseButton>
@@ -43,6 +46,7 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
+  edit: [task: Task];
   delete: [id: string];
 }>();
 
