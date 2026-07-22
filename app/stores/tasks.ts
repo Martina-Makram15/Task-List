@@ -39,6 +39,17 @@ export const useTasksStore = defineStore("tasks", () => {
     return task;
   };
 
+  const editTask = async (id: string, input: TaskInput): Promise<Task> => {
+    const updated = await $fetch<Task>(`/api/tasks/${id}`, {
+      method: "PUT",
+      body: input,
+    });
+    tasks.value = tasks.value.map((task) =>
+      task.id === id ? updated : task,
+    );
+    return updated;
+  };
+
   const removeTask = async (id: string): Promise<void> => {
     await $fetch(`/api/tasks/${id}`, { method: "DELETE" });
     tasks.value = tasks.value.filter((task) => task.id !== id);
@@ -61,6 +72,7 @@ export const useTasksStore = defineStore("tasks", () => {
     filteredTasks,
     fetchTasks,
     addTask,
+    editTask,
     removeTask,
     setStatusFilter,
     setSearchQuery,

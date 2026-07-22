@@ -16,6 +16,18 @@
       />
     </BaseModal>
 
+    <BaseModal v-model="isEditModalOpen" title="Edit Task">
+      <TaskForm
+        v-if="editingTask"
+        :initial-task="editingTask"
+        submit-label="Save Changes"
+        show-cancel
+        :is-submitting="isEditSubmitting"
+        @submit="handleEditTask"
+        @cancel="editingTask = null"
+      />
+    </BaseModal>
+
     <TaskFilters class="mb-6" />
 
     <LoadingState v-if="tasksStore.isLoading" />
@@ -29,6 +41,7 @@
     <TaskList
       v-else
       :tasks="tasksStore.filteredTasks"
+      @edit="editingTask = $event"
       @delete="tasksStore.removeTask($event)"
     />
   </div>
@@ -42,13 +55,23 @@ import LoadingState from "~/components/LoadingState.vue";
 import TaskFilters from "~/components/TaskFilters.vue";
 import TaskForm from "~/components/TaskForm.vue";
 import TaskList from "~/components/TaskList.vue";
-import type { TaskInput } from "../../shared/types/task";
+import type { Task, TaskInput } from "../../shared/types/task";
 import { useTasksStore } from "~/stores/tasks";
 
 const tasksStore = useTasksStore();
 
 const isFormOpen = ref(false);
 const isSubmitting = ref(false);
+
+const editingTask = ref<Task | null>(null);
+const isEditSubmitting = ref(false);
+
+const isEditModalOpen = computed<boolean>({
+  get: () => editingTask.value !== null,
+  set: (value) => {
+    if (!value) editingTask.value = null;
+  },
+});
 
 onMounted(() => {
   tasksStore.fetchTasks();
@@ -61,6 +84,18 @@ const handleAddTask = async (input: TaskInput): Promise<void> => {
     isFormOpen.value = false;
   } finally {
     isSubmitting.value = false;
+  }
+};
+
+const handleEditTask = async (input: TaskInput): Promise<void> => {
+  if (!editingTask.value) return;
+
+  isEditSubmitting.value = true;
+  try {
+    await tasksStore.editTask(editingTask.value.id, input);
+    editingTask.value = null;
+  } finally {
+    isEditSubmitting.value = false;
   }
 };
 </script>

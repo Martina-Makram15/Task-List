@@ -4,6 +4,7 @@
       v-for="task in tasks"
       :key="task.id"
       :task="task"
+      @edit="emit('edit', $event)"
       @delete="emit('delete', $event)"
     />
   </ul>
@@ -25,6 +26,7 @@ defineProps<{
 }>();
 
 const emit = defineEmits<{
+  edit: [task: Task];
   delete: [id: string];
 }>();
 </script>
