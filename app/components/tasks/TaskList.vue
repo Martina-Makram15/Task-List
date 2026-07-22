@@ -9,12 +9,17 @@
     />
   </ul>
 
-  <p
+  <div
     v-else
-    class="rounded-lg border border-dashed border-gray-300 p-8 text-center text-sm text-gray-500"
+    class="flex flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-slate-300 bg-white/50 py-14 text-center"
   >
-    No tasks match your filters.
-  </p>
+    <p class="text-sm font-medium text-slate-600">
+      No tasks match your filters
+    </p>
+    <p class="text-xs text-slate-400">
+      Try adjusting your search or status filter.
+    </p>
+  </div>
 </template>
 
 <script setup lang="ts">

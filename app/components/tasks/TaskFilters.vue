@@ -6,7 +6,7 @@
       :value="tasksStore.searchQuery"
       type="text"
       placeholder="Search by title..."
-      class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:max-w-xs"
+      class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm transition placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 sm:max-w-xs"
       @input="
         tasksStore.setSearchQuery(($event.target as HTMLInputElement).value)
       "
